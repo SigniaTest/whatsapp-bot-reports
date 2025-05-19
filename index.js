@@ -1,93 +1,80 @@
-const qrcode = require('qrcode-terminal');
-const { Client, MessageMedia } = require('whatsapp-web.js');
+const { Client, LocalAuth } = require('whatsapp-web.js');
 const express = require('express');
+const qrcode = require('qrcode-terminal');
+const bodyParser = require('body-parser');
 
 const app = express();
-app.use(express.json());
+const port = process.env.PORT || 3000;
 
-let conectado = false;
+// Middleware para leer JSON
+app.use(bodyParser.json());
 
-const client = new Client();
-
-client.on('qr', qr => {
-    console.log('🟡 Escanea este QR con el celular (el número del bot):');
-    qrcode.generate(qr, { small: true });
+// Cliente WhatsApp con sesión persistente en carpeta local
+const client = new Client({
+  authStrategy: new LocalAuth({
+    dataPath: './.wwebjs_auth/session', // 👈 esta carpeta será subida al repo
+  }),
+  puppeteer: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  }
 });
 
-client.on('ready', async () => {
-    conectado = true;
-    console.log('🟢 Bot conectado a WhatsApp!');
-
-    // Esperamos 5 segundos para asegurarnos que cargan los chats
-    setTimeout(async () => {
-        const chats = await client.getChats();
-        console.log('\n📋 GRUPOS DONDE ESTÁS:\n');
-
-        if (chats.length === 0) {
-            console.log('⚠️ No se encontraron chats aún. Escribe o recibe un mensaje desde un grupo.');
-        }
-
-        for (const chat of chats) {
-            if (chat.isGroup) {
-                console.log(`🧾 Grupo: ${chat.name}`);
-                console.log(`🆔 ID: ${chat.id._serialized}\n`);
-            }
-        }
-    }, 5000);
+// Muestra QR por consola al iniciar (solo la 1ra vez)
+client.on('qr', (qr) => {
+  qrcode.generate(qr, { small: true });
+  console.log('📸 Escanea el QR para iniciar sesión');
 });
 
-client.on('disconnected', () => {
-    conectado = false;
-    console.log('🔴 Bot desconectado de WhatsApp.');
+client.on('ready', () => {
+  console.log('✅ Cliente de WhatsApp listo y conectado');
 });
 
-client.initialize();
-
-// Escucha todos los mensajes recibidos
-client.on('message', async msg => {
-    console.log(`📨 Mensaje recibido de: ${msg.from}`);
-
-    if (msg.from.endsWith('@g.us')) {
-        const chat = await msg.getChat();
-        console.log('📣 Mensaje recibido de grupo');
-        console.log('🧾 Nombre del grupo:', chat.name);
-        console.log('🆔 ID del grupo:', chat.id._serialized);
-    } else {
-        console.log('👤 Mensaje privado');
-    }
+client.on('authenticated', () => {
+  console.log('🔐 Cliente autenticado');
 });
 
-// Endpoint para verificar si está online
-app.get('/status', (req, res) => {
-    res.json({ online: conectado });
+client.on('auth_failure', msg => {
+  console.error('❌ Fallo de autenticación:', msg);
 });
 
-// Endpoint para enviar mensaje (texto o imagen)
+client.on('disconnected', reason => {
+  console.log('🔌 Cliente desconectado:', reason);
+});
+
+// Endpoint para recibir POST y enviar mensaje
 app.post('/send', async (req, res) => {
-    let { to, message, imageUrl } = req.body;
+  const { number, message } = req.body;
 
-    // Validar si es grupo o contacto
-    if (!to.endsWith('@c.us') && !to.endsWith('@g.us')) {
-        to += '@c.us'; // Asume que es número de contacto
-    }
+  if (!number || !message) {
+    return res.status(400).send('Faltan parámetros: number o message');
+  }
 
-    try {
-        if (imageUrl) {
-            const media = await MessageMedia.fromUrl(imageUrl);
-            await client.sendMessage(to, media, { caption: message });
-        } else {
-            await client.sendMessage(to, message);
-        }
+  // Asegurarse de que el número tenga formato internacional (con +)
+  const fullNumber = number.includes('@c.us') ? number : `${number}@c.us`;
 
-        res.json({ success: true });
-    } catch (err) {
-        console.error('❌ Error al enviar mensaje:', err);
-        res.status(500).json({ success: false, error: err.message });
-    }
+  try {
+    await client.sendMessage(fullNumber, message);
+    console.log(`📤 Mensaje enviado a ${fullNumber}: ${message}`);
+    res.send('✅ Mensaje enviado');
+  } catch (error) {
+    console.error('❌ Error al enviar mensaje:', error);
+    res.status(500).send('Error al enviar mensaje');
+  }
 });
 
-// Iniciar servidor en localhost:3000
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 API escuchando en http://localhost:${PORT}`);
+app.get('/status', (req, res) => {
+  const isReady = client.info ? true : false;
+
+  res.json({
+    status: isReady ? '✅ Conectado a WhatsApp' : '⏳ No conectado aún',
+    user: isReady ? client.info.wid.user : null,
+    platform: isReady ? client.info.platform : null,
+  });
 });
+// Iniciar servidor Express
+app.listen(port, () => {
+  console.log(`🚀 Servidor Express escuchando en puerto ${port}`);
+});
+
+// Iniciar cliente de WhatsApp
+client.initialize();
