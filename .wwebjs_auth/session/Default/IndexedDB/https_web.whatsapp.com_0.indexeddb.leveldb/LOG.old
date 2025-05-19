@@ -1,0 +1,59 @@
+2025/05/19-00:35:55.878 71a0 Reusing MANIFEST C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/05/19-00:35:55.878 71a0 Recovering log #641
+2025/05/19-00:35:55.955 71a0 Reusing old log C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000641.log 
+2025/05/19-00:35:56.525 3a28 Compacting 1@1 + 1@2 files
+2025/05/19-00:35:56.577 3a28 Generated table #650@1: 34067 keys, 2197460 bytes
+2025/05/19-00:35:56.586 3a28 Generated table #651@1: 3 keys, 2729 bytes
+2025/05/19-00:35:56.586 3a28 Compacted 1@1 + 1@2 files => 2200189 bytes
+2025/05/19-00:35:56.587 3a28 compacted to: files[ 0 0 22 0 0 0 0 ]
+2025/05/19-00:35:56.588 3a28 Delete type=2 #625
+2025/05/19-00:35:56.588 3a28 Delete type=2 #643
+2025/05/19-00:35:57.194 7304 Level-0 table #653: started
+2025/05/19-00:35:57.201 7304 Level-0 table #653: 357574 bytes OK
+2025/05/19-00:35:57.202 7304 Delete type=0 #641
+2025/05/19-00:35:57.203 7304 Manual compaction at level-0 from '\x002\x00\x00\x00' @ 72057594037927935 : 1 .. '\x003\x00\x00\x00' @ 0 : 0; will stop at '\x002\x00\x00\x05' @ 2101042 : 1
+2025/05/19-00:35:57.203 7304 Compacting 1@0 + 0@1 files
+2025/05/19-00:35:57.211 7304 Generated table #654@0: 7133 keys, 63692 bytes
+2025/05/19-00:35:57.218 7304 Generated table #655@0: 6070 keys, 161365 bytes
+2025/05/19-00:35:57.218 7304 Compacted 1@0 + 0@1 files => 225057 bytes
+2025/05/19-00:35:57.219 7304 compacted to: files[ 0 2 22 0 0 0 0 ]
+2025/05/19-00:35:57.219 7304 Delete type=2 #653
+2025/05/19-00:35:57.220 7304 Manual compaction at level-0 from '\x002\x00\x00\x05' @ 2101042 : 1 .. '\x003\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/05/19-00:35:59.235 3a28 Compacting 1@1 + 1@2 files
+2025/05/19-00:35:59.271 3a28 Generated table #656@1: 34180 keys, 2195918 bytes
+2025/05/19-00:35:59.274 3a28 Generated table #657@1: 6 keys, 6039 bytes
+2025/05/19-00:35:59.274 3a28 Compacted 1@1 + 1@2 files => 2201957 bytes
+2025/05/19-00:35:59.275 3a28 compacted to: files[ 0 1 23 0 0 0 0 ]
+2025/05/19-00:36:01.587 3a28 Compacting 1@1 + 3@2 files
+2025/05/19-00:36:01.616 3a28 Generated table #658@1: 14225 keys, 2205404 bytes
+2025/05/19-00:36:01.685 3a28 Generated table #659@1: 96874 keys, 2245839 bytes
+2025/05/19-00:36:01.740 3a28 Generated table #660@1: 76453 keys, 1706656 bytes
+2025/05/19-00:36:01.740 3a28 Compacted 1@1 + 3@2 files => 6157899 bytes
+2025/05/19-00:36:01.742 3a28 compacted to: files[ 0 0 23 0 0 0 0 ]
+2025/05/19-00:36:01.742 3a28 Delete type=2 #646
+2025/05/19-00:36:01.742 3a28 Delete type=2 #647
+2025/05/19-00:36:01.742 3a28 Delete type=2 #648
+2025/05/19-00:36:01.742 3a28 Delete type=2 #650
+2025/05/19-00:36:01.742 3a28 Delete type=2 #654
+2025/05/19-00:36:01.742 3a28 Delete type=2 #655
+2025/05/19-00:36:26.837 71a0 Level-0 table #662: started
+2025/05/19-00:36:26.854 71a0 Level-0 table #662: 1122988 bytes OK
+2025/05/19-00:36:26.856 71a0 Delete type=0 #652
+2025/05/19-00:36:27.864 7304 Compacting 1@0 + 0@1 files
+2025/05/19-00:36:27.905 7304 Generated table #663@0: 21618 keys, 234209 bytes
+2025/05/19-00:36:27.925 7304 Generated table #664@0: 15935 keys, 436869 bytes
+2025/05/19-00:36:27.925 7304 Compacted 1@0 + 0@1 files => 671078 bytes
+2025/05/19-00:36:27.926 7304 compacted to: files[ 0 2 23 0 0 0 0 ]
+2025/05/19-00:36:28.933 3a28 Compacting 1@1 + 4@2 files
+2025/05/19-00:36:29.010 3a28 Generated table #665@1: 61145 keys, 2266343 bytes
+2025/05/19-00:36:29.040 3a28 Generated table #666@1: 14231 keys, 2206305 bytes
+2025/05/19-00:36:29.110 3a28 Generated table #667@1: 92883 keys, 2240848 bytes
+2025/05/19-00:36:29.185 3a28 Generated table #668@1: 96302 keys, 2137005 bytes
+2025/05/19-00:36:29.185 3a28 Compacted 1@1 + 4@2 files => 8850501 bytes
+2025/05/19-00:36:29.187 3a28 compacted to: files[ 0 1 23 0 0 0 0 ]
+2025/05/19-00:36:29.187 3a28 Delete type=2 #645
+2025/05/19-00:36:29.187 3a28 Delete type=2 #658
+2025/05/19-00:36:29.187 3a28 Delete type=2 #659
+2025/05/19-00:36:29.187 3a28 Delete type=2 #660
+2025/05/19-00:36:29.187 3a28 Delete type=2 #662
+2025/05/19-00:36:29.187 3a28 Delete type=2 #664
