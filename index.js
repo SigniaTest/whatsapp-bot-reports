@@ -50,7 +50,11 @@ app.post('/send', async (req, res) => {
   }
 
   // Asegurarse de que el número tenga formato internacional (con +)
-  const fullNumber = number.includes('@c.us') ? number : `${number}@c.us`;
+  let fullNumber = number;
+  if (!number.includes('@c.us') && !number.includes('@g.us')) {
+  fullNumber = `${number}@c.us`; // por defecto
+  }
+
 
   try {
     await client.sendMessage(fullNumber, message);
