@@ -75,6 +75,24 @@ app.get('/status', (req, res) => {
     platform: isReady ? client.info.platform : null,
   });
 });
+// Endpoint para listar todos los chats de grupo
+app.get('/grupos', async (req, res) => {
+  try {
+    const chats = await client.getChats();
+    const grupos = chats
+      .filter(chat => chat.isGroup)
+      .map(chat => ({
+        nombre: chat.name,
+        id: chat.id._serialized
+      }));
+
+    res.json(grupos);
+  } catch (error) {
+    console.error('❌ Error al obtener grupos:', error);
+    res.status(500).send('Error al obtener grupos');
+  }
+});
+
 // Iniciar servidor Express
 app.listen(port, '0.0.0.0',() => {
   console.log(`🚀 Servidor Express escuchando en puerto ${port}`);
