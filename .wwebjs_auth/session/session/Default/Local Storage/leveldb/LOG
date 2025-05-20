@@ -1,3 +1,6 @@
-2025/05/19-02:40:54.361 89a0 Reusing MANIFEST C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\session\Default\Local Storage\leveldb/MANIFEST-000001
-2025/05/19-02:40:54.361 89a0 Recovering log #3
-2025/05/19-02:40:54.361 89a0 Reusing old log C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\session\Default\Local Storage\leveldb/000003.log 
+2025/05/19-15:50:37.270 6c50 Reusing MANIFEST C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\session\Default\Local Storage\leveldb/MANIFEST-000001
+2025/05/19-15:50:37.271 6c50 Recovering log #7
+2025/05/19-15:50:37.271 6c50 Reusing old log C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\session\Default\Local Storage\leveldb/000007.log 
+2025/05/19-17:20:50.345 7d18 Level-0 table #11: started
+2025/05/19-17:20:50.351 7d18 Level-0 table #11: 14277 bytes OK
+2025/05/19-17:20:50.356 7d18 Delete type=0 #7

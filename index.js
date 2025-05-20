@@ -1,4 +1,4 @@
-const { Client, LocalAuth } = require('whatsapp-web.js');
+const { Client, LocalAuth, MessageMedia} = require('whatsapp-web.js');
 const express = require('express');
 const qrcode = require('qrcode-terminal');
 const bodyParser = require('body-parser');
@@ -43,22 +43,27 @@ client.on('disconnected', reason => {
 
 // Endpoint para recibir POST y enviar mensaje
 app.post('/send', async (req, res) => {
-  const { number, message } = req.body;
+  const { number, message, imageUrl } = req.body;
 
   if (!number || !message) {
     return res.status(400).send('Faltan parámetros: number o message');
   }
 
-  // Asegurarse de que el número tenga formato internacional (con +)
   let fullNumber = number;
   if (!number.includes('@c.us') && !number.includes('@g.us')) {
-  fullNumber = `${number}@c.us`; // por defecto
+    fullNumber = `${number}@c.us`; // por defecto
   }
 
-
   try {
-    await client.sendMessage(fullNumber, message);
-    console.log(`📤 Mensaje enviado a ${fullNumber}: ${message}`);
+    if (imageUrl) {
+      const media = await MessageMedia.fromUrl(imageUrl);
+      await client.sendMessage(fullNumber, media, { caption: message });
+      console.log(`📤 Imagen enviada a ${fullNumber} con mensaje`);
+    } else {
+      await client.sendMessage(fullNumber, message);
+      console.log(`📤 Mensaje enviado a ${fullNumber}: ${message}`);
+    }
+
     res.send('✅ Mensaje enviado');
   } catch (error) {
     console.error('❌ Error al enviar mensaje:', error);
@@ -92,11 +97,48 @@ app.get('/grupos', async (req, res) => {
     res.status(500).send('Error al obtener grupos');
   }
 });
+// Endpoint para obtener todos los contactos
+app.get('/contactos', async (req, res) => {
+  try {
+    const contactos = await client.getContacts();
 
+    const lista = contactos.map(contacto => ({
+      nombre: contacto.name || contacto.pushname || "Sin nombre",
+      numero: contacto.number,
+      id: contacto.id._serialized,
+      esUsuarioWA: contacto.isMyContact || false,
+      esGrupo: contacto.isGroup || false
+    }));
+
+    res.json(lista);
+  } catch (error) {
+    console.error('❌ Error al obtener contactos:', error);
+    res.status(500).send('Error al obtener contactos');
+  }
+});
 // Iniciar servidor Express
 app.listen(port, '0.0.0.0',() => {
   console.log(`🚀 Servidor Express escuchando en puerto ${port}`);
 });
+
+const os = require('os');
+function getLocalIp() {
+  const interfaces = os.networkInterfaces();
+  for (let name in interfaces) {
+    for (let iface of interfaces[name]) {
+      if (
+        iface.family === 'IPv4' &&
+        !iface.internal &&
+        iface.address.startsWith("172.23")
+      ) {
+        return iface.address;
+      }
+    }
+  }
+  return 'localhost';
+}
+
+console.log(`🌐 Servidor accesible desde: http://${getLocalIp()}:${port}/status`);
 
 // Iniciar cliente de WhatsApp
 client.initialize();

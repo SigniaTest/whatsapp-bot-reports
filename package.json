@@ -21,5 +21,8 @@
     "url": "https://github.com/SigniaTest/whatsapp-bot-reports/issues"
   },
   "homepage": "https://github.com/SigniaTest/whatsapp-bot-reports#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.27.0"
+  }
 }

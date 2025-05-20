@@ -1,29 +1,17 @@
-2025/05/19-02:29:53.870 7b3c Reusing MANIFEST C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/05/19-02:29:53.871 7b3c Recovering log #149
-2025/05/19-02:29:53.947 7b3c Reusing old log C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000149.log 
-2025/05/19-02:29:57.885 5c9c Level-0 table #160: started
-2025/05/19-02:29:57.891 5c9c Level-0 table #160: 393232 bytes OK
-2025/05/19-02:29:57.893 5c9c Delete type=0 #149
-2025/05/19-02:29:57.894 5c9c Manual compaction at level-0 from '\x003\x00\x00\x00' @ 72057594037927935 : 1 .. '\x004\x00\x00\x00' @ 0 : 0; will stop at '\x003\x00\x00\x05' @ 453818 : 1
-2025/05/19-02:29:57.894 5c9c Compacting 1@0 + 2@1 files
-2025/05/19-02:29:57.946 5c9c Generated table #161@0: 42354 keys, 2266937 bytes
-2025/05/19-02:29:57.964 5c9c Generated table #162@0: 20875 keys, 577508 bytes
-2025/05/19-02:29:57.964 5c9c Compacted 1@0 + 2@1 files => 2844445 bytes
-2025/05/19-02:29:57.965 5c9c compacted to: files[ 0 2 4 0 0 0 0 ]
-2025/05/19-02:29:57.965 5c9c Delete type=2 #160
-2025/05/19-02:29:57.965 5c9c Manual compaction at level-0 from '\x003\x00\x00\x05' @ 453818 : 1 .. '\x004\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/05/19-02:29:58.931 5c9c Compacting 1@1 + 4@2 files
-2025/05/19-02:29:58.972 5c9c Generated table #163@1: 34306 keys, 2190629 bytes
-2025/05/19-02:29:58.987 5c9c Generated table #164@1: 1901 keys, 2154085 bytes
-2025/05/19-02:29:59.003 5c9c Generated table #165@1: 2039 keys, 2156180 bytes
-2025/05/19-02:29:59.038 5c9c Generated table #166@1: 22305 keys, 2245431 bytes
-2025/05/19-02:29:59.056 5c9c Generated table #167@1: 20160 keys, 966217 bytes
-2025/05/19-02:29:59.056 5c9c Compacted 1@1 + 4@2 files => 9712542 bytes
-2025/05/19-02:29:59.057 5c9c compacted to: files[ 0 1 5 0 0 0 0 ]
-2025/05/19-02:29:59.057 5c9c Delete type=2 #152
-2025/05/19-02:29:59.057 5c9c Delete type=2 #153
-2025/05/19-02:29:59.057 5c9c Delete type=2 #154
-2025/05/19-02:29:59.057 5c9c Delete type=2 #155
-2025/05/19-02:29:59.057 5c9c Delete type=2 #156
-2025/05/19-02:29:59.057 5c9c Delete type=2 #157
-2025/05/19-02:29:59.057 5c9c Delete type=2 #161
+2025/05/19-15:26:07.876 6740 Reusing MANIFEST C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/05/19-15:26:07.880 6740 Recovering log #774
+2025/05/19-15:26:07.892 6740 Reusing old log C:\Users\EDUARDO XD\Desktop\BotWhatsapo\BotWhatsapp\.wwebjs_auth\session\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000774.log 
+2025/05/19-15:26:12.000 6740 Level-0 table #781: started
+2025/05/19-15:26:12.003 6740 Level-0 table #781: 117361 bytes OK
+2025/05/19-15:26:12.005 6740 Delete type=0 #774
+2025/05/19-15:26:12.005 6740 Manual compaction at level-0 from '\x006\x00\x00\x00' @ 72057594037927935 : 1 .. '\x007\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/05/19-15:26:13.108 6740 Compacting 1@1 + 3@2 files
+2025/05/19-15:26:13.148 6740 Generated table #782@1: 31047 keys, 2183801 bytes
+2025/05/19-15:26:13.183 6740 Generated table #783@1: 17277 keys, 2194550 bytes
+2025/05/19-15:26:13.229 6740 Generated table #784@1: 54862 keys, 1092392 bytes
+2025/05/19-15:26:13.229 6740 Compacted 1@1 + 3@2 files => 5470743 bytes
+2025/05/19-15:26:13.231 6740 compacted to: files[ 0 0 3 0 0 0 0 ]
+2025/05/19-15:26:13.231 6740 Delete type=2 #776
+2025/05/19-15:26:13.231 6740 Delete type=2 #777
+2025/05/19-15:26:13.231 6740 Delete type=2 #778
+2025/05/19-15:26:13.231 6740 Delete type=2 #781
